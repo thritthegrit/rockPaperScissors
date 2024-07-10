@@ -12,17 +12,17 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     valid = false;
-    humanChoice = prompt('Choose one between rock, paper, or scissors');
-    humanChoice = humanChoice.toLowerCase;
+    let humanChoice = prompt('Choose one between rock, paper, or scissors').toLowerCase();
+    //console.log(humanChoice.toLowerCase());
     while(!valid) {
-        if (humanChoice === "rock") {
+        if (humanChoice == "rock") {
             valid = true;
-        } else if (humanChoice === 'scissors') {
+        } else if (humanChoice == 'scissors') {
             valid = true;
-        } else if (humanChoice === 'paper') {
+        } else if (humanChoice == 'paper') {
             valid = true;
         } else {
-            humanChoice = prompt("Try again");
+            humanChoice = prompt("Try again").toLowerCase();
         }
     }
     return humanChoice;
@@ -64,3 +64,14 @@ function playRound (humanChoice, computerChoice) {
         computerScore++;
     }
 }
+
+function playGame() {
+    for (let i=0; i < 5; i++) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+    console.log('Your Score: ' + humanScore + ' Computer Score: ' + computerScore);
+}
+
+playGame();
